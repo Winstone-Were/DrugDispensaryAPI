@@ -25,11 +25,16 @@ app.use(session({
 }));
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname,'static')));
+app.use(express.static(path.join(__dirname,'/static')));
+app.use(express.static(path.join(__dirname,'/scripts')))
 
 app.get('/', (req,res)=>{
     res.sendFile(path.join(__dirname+'pages/login.html'));
 });
+
+app.get('/userhome',authenticateToken,(req,res)=>{
+    res.sendFile(path.join(__dirname,'pages/userhome.html'));
+})
 
 app.post('/auth', (req,res)=>{
     let SSN = req.body.SSN;
@@ -76,6 +81,10 @@ app.get('/profile', authenticateToken, (req,res)=>{
         }
 
     })
+})
+
+app.get('/login', (req,res)=>{
+    res.sendFile(path.join(__dirname+'/pages/login.html'));
 })
 
 function authenticateToken(req, res, next ){
