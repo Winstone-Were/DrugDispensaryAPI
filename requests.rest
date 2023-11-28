@@ -1,0 +1,12 @@
+POST http://localhost:3030/auth
+Content-Type: application/json
+
+{
+    "SSN" : "150222",
+    "password" : "123"
+}
+
+###
+
+GET http://localhost:3030/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTU04iOiIxNTAyMjIiLCJwYXNzd29yZCI6IjEyMyIsImlhdCI6MTcwMTE4NjYzM30.60ffgyVEpeYoDda6dkkT1gBvDqaU3AAoP06hKl-221A
