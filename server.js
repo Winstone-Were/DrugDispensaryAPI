@@ -48,6 +48,8 @@ app.post('/auth', (req,res)=>{
                 const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
                 res.json({accessToken: accessToken});
 
+                
+
             }
 
         })
