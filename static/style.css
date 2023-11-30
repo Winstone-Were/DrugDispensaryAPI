@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.login-signup-container {
+    width: 20%;
+    height: fit-content;
+    background-color: aqua;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    padding: 5em;
+}
+
+.login-signup-container input {
+    margin: 1em 1em;
+}
