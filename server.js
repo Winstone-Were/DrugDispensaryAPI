@@ -151,6 +151,16 @@ app.get('/getProfileByEmail/:email',(req,res)=>{
     });
 });
 
+app.get('/getDrugsByUser/:SSN',(req,res)=>{
+    connection.query('SELECT * FROM dispensed_prescriptions WHERE patient_SSN = ?', [req.params.SSN], (error, results, fields)=>{
+        if (error) throw error;
+
+        if(results.length > 0){
+            res.json(results);
+        }
+    } )
+})
+
 app.get('/getProfileByDrug/:drugId',(req,res)=>{
 
     connection.query('SELECT * FROM dispensed_prescriptions WHERE drug_ID = ?', [req.params.drugId], (error, results, fields)=>{

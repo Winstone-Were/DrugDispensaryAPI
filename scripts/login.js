@@ -6,6 +6,8 @@ loginButton.addEventListener("click",(e)=>{
     let userSSN = document.querySelector(".SSN").value; 
     let userPassword = document.querySelector(".password").value;
 
+    localStorage.setItem("userSSN", userSSN);
+
     let accessToken;
     let url;
 
@@ -26,6 +28,7 @@ loginButton.addEventListener("click",(e)=>{
 
     }).then(()=>{
         sessionStorage.setItem("accessToken", accessToken);
+
         //apply logic to know whether is user or Admin
         
                         let link = document.createElement("a");
