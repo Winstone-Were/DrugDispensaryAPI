@@ -1,49 +1,171 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Register</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <link href="assets/css/style.css" rel="stylesheet">
+
 </head>
+
 <body>
-    <form class="login-signup-container">
-        <span>
-            <p>SSN</p>
-            <input type="text" class="SSN">
-        </span>
-        <span>
-            <p>First Name</p>
-            <input type="text" class="Fname">
-        </span>
-        <span>
-            <p>Last Name</p>
-            <input type="text" class="Lname">
-        </span>
-        <span>
-            <p>Phone Number</p>
-            <input type="text" class="phone">
-        </span>
-        <span>
-            <p>Date of Birth </p>
-            <input type="date" class="dob">
-        </span>
-        <span>
-            <p>Email</p>
-            <input type="text" class="email">
-        </span>
-        <span>
-            <p>Password</p>
-            <input type="text" class="password">
-        </span>
-        <span>
-            <p>Address</p>
-            <input type="text" class="location"> 
-        </span>
-        <span class="submit-span">
-            <input type="submit" value="SIGNUP">
-        </span>
-    </form>
-    <script src="./signup.js"></script>
+
+  <main>
+    <div class="container">
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+                  <div><?php echo $msg; ?></div>
+                  
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                    <p class="text-center small">Enter your personal details to create account</p>
+                  </div>
+
+                  <form class="row g-3  ">
+                    <div class="col-12">
+                      <label for="yourName" class="form-label">Your SSN</label>
+                      <input type="text" name="SSN" class="form-control user-ssn" id="yourName" required>
+                      <div class="invalid-feedback">Please, enter your name!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <label class="form-label">First Name</label>
+                      <input type="text" name="fname" class="form-control user-fname"  id= "yourName" required>
+                    </div>
+
+                    <div class="col-12">
+                      <label class="form-label">Last Name</label>
+                      <input type="text" name="lname" class="form-control user-lname"  required>
+                    </div>
+
+                    <div class="col-12">
+                      <label class="form-label">DOB</label>
+                      <input type="date" name="dob" class="form-control user-dob"  required>
+                    </div>
+
+                    <div class="col-12">
+                      <label class="form-label">Phone</label>
+                      <input type="text" name="phone" class="form-control user-phone" required>
+                    </div> 
+
+                    <div class="col-12">
+                      <label class="form-label">Email </label>
+                      <input type="text" name="email" class="form-control user-email" id="yourEmail" required>
+                    </div>
+
+                    <div class="col-12">
+                      <label class="form-label">Address </label>
+                      <input type="text" name="address" class="form-control user-address" id="yourEmail" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="yourPassword" class="form-label">GENDER</label>
+                        <input type="text" name="password" class="form-control user-gender"  required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+
+                    <div class="col-12">
+                      <label for="yourPassword" class="form-label">Password</label>
+                      <input type="password" name="password" class="form-control user-password" id="yourPassword" required>
+                      <div class="invalid-feedback">Please enter your password!</div>
+                    </div>
+
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100 register-button" name="btnsubmit">Create Account</button>
+                      </div>
+
+                    <div class="col-12">
+                      <p class="small mb-0">Already have an account? <a href="login.php">Log in</a></p>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script>
+
+
+
+
+    document.querySelector(".register-button").addEventListener("click",(e)=>{
+    
+        e.preventDefault();
+
+        let SSN = document.querySelector(".user-ssn").value;
+        let fname = document.querySelector(".user-fname").value;
+        let lname = document.querySelector(".user-lname").value;
+
+        let dob = document.querySelector(".user-dob").value;
+        let phone = document.querySelector(".user-phone").value;
+        let email = document.querySelector(".user-email").value;
+
+
+        let address = document.querySelector(".user-address").value;
+        let gender = document.querySelector(".user-gender").value;
+        let password = document.querySelector(".user-password").value;
+
+
+        fetch('/addUser',{
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            }, body:JSON.stringify({SSN:SSN, fname: fname, lname:lname, dob:dob, phone:phone, email: email, address: address, gender:gender, password:password})
+
+        }).then(()=>{
+            localStorage.setItem("userSSN", userSSN);
+
+            sessionStorage.setItem("accessToken", accessToken);
+
+                let link = document.createElement("a");
+                link.href = '/userhome'
+                document.body.appendChild(link);
+                link.click(); 
+
+        }).catch(err=> console.log);
+
+    })
+  </script>
+
 </body>
+
 </html>
