@@ -27,14 +27,24 @@ app.use(session({
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname,'/static')));
-app.use(express.static(path.join(__dirname,'/scripts')))
+app.use(express.static(path.join(__dirname,'/scripts')));
+app.use(express.static(path.join(__dirname,'/public')));
+
 
 app.get('/', (req,res)=>{
-    res.sendFile(path.join(__dirname+'pages/login.html'));
+    res.sendFile(path.join(__dirname,'pages/login.html'));
 });
 
 app.get('/signup', (req,res)=>{
     res.sendFile(path.join(__dirname,'pages/signup.html'));
+});
+
+app.get('/admin-add-drug', (req,res)=>{
+    res.sendFile(path.join(__dirname, 'pages/admin-add-drug.html'));
+})
+
+app.get('/admin-search', (req,res)=>{
+    res.sendFile(path.join(__dirname, 'pages/admin-search.html'));
 })
 
 app.get('/userhome',(req,res)=>{
@@ -162,7 +172,7 @@ app.get('/getProfileByDrug/:drugId',(req,res)=>{
                             data.patient_SSN =  patientId;
                             data.patientName = `${results[0].Fname} ${results[0].Lname}`;
                         }
-                        res.json(data);
+                        res.json([data]);
                     });
                 }
             });
@@ -223,6 +233,73 @@ app.get('/getProfileByGender',(req,res)=>{
 
 app.get('/login', (req,res)=>{
     res.sendFile(path.join(__dirname+'/pages/login.html'));
+});
+
+app.post('/addDrug',authenticateToken, (req,res)=>{
+    console.log(req.body);
+    let drug_id = req.body.drug_id;
+    let drug_formula = req.body.drug_formula;
+    let drug_name = req.body.drug_name;
+    let quantity = req.body.quantity;
+    let price = req.body.price;
+
+    connection.query('INSERT INTO drugs(drug_id, drug_formula, drug_name, quantity, price_per_unit) VALUES(?, ?, ?, ?, ?)',[drug_id, drug_formula, drug_name, quantity, price], (error,result, fields )=>{
+        if(error) throw error;
+        res.json({state: "success"});
+    });
+
+});
+
+app.post('/updateDrug',authenticateToken, (req,res)=>{
+    console.log(req.body);
+    let drug_id = req.body.drug_id;
+    let drug_formula = req.body.drug_formula;
+    let drug_name = req.body.drug_name;
+    let quantity = req.body.quantity;
+    let price = req.body.price;
+
+    connection.query('UPDATE drugs SET drug_formula = ?,drug_name = ?,quantity = ?, price_per_unit = ? WHERE drug_id = ? ',[drug_id, drug_formula, drug_name, quantity, price], (error,result, fields )=>{
+        if(error) throw error;
+        res.json({state: "success"});
+    });
+
+});
+
+app.get('/drugs', authenticateToken,(req, res) => {
+    connection.query('SELECT * FROM drugs', function(err, result, fields){
+        res.json(result);
+    });
+});
+
+app.get('/drugs/:drug_id', authenticateToken, (req, res) => {
+    const drugId = req.params.drug_id;
+
+    connection.query('SELECT * FROM drugs WHERE drug_id = ?', [drugId], function (err, result, fields) {
+        if (err) throw err;
+
+        if (result.length > 0) {
+            res.json(result); 
+
+        } else {
+            res.status(404).json({ message: 'Drug not found' });
+        }
+    });
+});
+
+app.get('/drugs/by-category/:drug_category', (req, res) => {
+    const drugCategory = req.params.drug_category;
+
+    console.log(drugCategory);
+    
+    connection.query('SELECT * FROM drugs WHERE drug_formula = ?', [drugCategory], function (err, result, fields) {
+        if (err) throw err;
+
+        if (result.length > 0) {
+            res.json(result);
+        } else {
+            res.status(404).json({ message: 'No drugs found for the given category' });
+        }
+    });
 });
 
 function authenticateToken(req, res, next ){

@@ -15,6 +15,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTU04iOiIxNTAyMjIiL
 
 ####
 GET http://localhost:3030/getProfile/150222
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTU04iOiIxNTAyMjIiLCJwYXNzd29yZCI6IjEyMyIsImlhdCI6MTcwMTE4NjYzM30.60ffgyVEpeYoDda6dkkT1gBvDqaU3AAoP06hKl-221A
+
 
 ###
 GET http://localhost:3030/getProfileByDrug/404040
@@ -22,3 +24,16 @@ GET http://localhost:3030/getProfileByDrug/404040
 ###
 
 GET http://localhost:3030/getProfileByLastLogin
+
+###
+GET http://localhost:3030/static
+
+###
+
+GET http://localhost:3030/drugs/404040
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTU04iOiIxNTAyMjIiLCJwYXNzd29yZCI6IjEyMyIsImlhdCI6MTcwMTE4NjYzM30.60ffgyVEpeYoDda6dkkT1gBvDqaU3AAoP06hKl-221A
+
+
+###
+GET http://localhost:3030/drugs/by-category/Aspirine
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTU04iOiIxNTAyMjIiLCJwYXNzd29yZCI6IjEyMyIsImlhdCI6MTcwMTE4NjYzM30.60ffgyVEpeYoDda6dkkT1gBvDqaU3AAoP06hKl-221A

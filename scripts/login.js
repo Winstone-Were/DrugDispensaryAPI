@@ -1,7 +1,8 @@
 
 let loginButton = document.querySelector(".login_button");
 
-loginButton.addEventListener("click",()=>{
+loginButton.addEventListener("click",(e)=>{
+    e.preventDefault();
     let userSSN = document.querySelector(".SSN").value; 
     let userPassword = document.querySelector(".password").value;
 
@@ -12,7 +13,7 @@ loginButton.addEventListener("click",()=>{
                     headers: {
                         'Content-Type' : 'application/json'
                     },
-                    body: JSON.stringify({SSN: '150222', password: '123'})
+                    body: JSON.stringify({SSN: userSSN, password: userPassword})
     }).then(res=> res.json()).then(res=> {
         accessToken = res.accessToken;
         usertype = res.userType;
@@ -30,8 +31,7 @@ loginButton.addEventListener("click",()=>{
                         let link = document.createElement("a");
                         link.href = url;
                         document.body.appendChild(link);
-                        link.click();
-                    
+                        link.click();   
     }).catch(err=>console.log);
 
     //console.log(accessToken); d
