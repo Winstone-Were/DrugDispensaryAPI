@@ -74,6 +74,29 @@ Example Response:
   "password": "hashed_password",
   "address": "123 Main St, City",
   "gender": "Male"
-}```
+}
+```
 
+Authentication: Required.
 
+### 3.2 Get User Profile by SSN
+
+Endpoint: GET /getProfile/:SSN
+Description: Retrieves the profile information of a user by SSN.
+Response:
+Returns user profile information.
+Example Response:
+
+```json
+{
+  "SSN": "123456789",
+  "Fname": "John",
+  "Lname": "Doe",
+  "phone": "123-456-7890",
+  "dob": "1990-01-01",
+  "email": "john.doe@example.com",
+  "address": "123 Main St, City",
+  "gender": "Male"
+}
+```
+Authentication: Required.
