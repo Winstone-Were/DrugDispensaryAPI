@@ -74,6 +74,8 @@ Example Response:
   "address": "123 Main St, City",
   "gender": "Male"
 }```
+
+
 Authentication: Required.
 
 ### 3.2 Get User Profile by SSN
